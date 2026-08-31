@@ -71,11 +71,13 @@ for (const path of [
   '/request-quote', '/cart', '/checkout', '/wishlist', '/delivery',
   '/sitemap.xml', '/robots.txt',
 ]) {
-  await test(path, async () => {
+    await test(path, async () => {
     const res = await get(path);
     const body = await res.text();
-    if (body.length < 500) throw new Error('suspiciously short response');
-    return `${(body.length / 1024).toFixed(0)} kB`;
+    // robots.txt is legitimately ~120 bytes; HTML pages should be much larger.
+    const min = path === '/robots.txt' ? 40 : 500;
+    if (body.length < min) throw new Error('suspiciously short response');
+    return `${(body.length / 1024).toFixed(1)} kB`;
   });
 }
 
