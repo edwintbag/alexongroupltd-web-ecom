@@ -1,6 +1,7 @@
 import { supabaseAdmin } from '@/lib/server/supabase';
 import { enquirySchema } from '@/lib/server/schemas';
 import { ok, badRequest, serverError, guardConfigured } from '@/lib/server/respond';
+import { notify } from '@/lib/server/mail';
 
 export const runtime = 'nodejs';
 
@@ -22,5 +23,16 @@ export async function POST(request: Request) {
     console.error('[alexon] enquiry insert failed', error);
     return serverError();
   }
+
+  await notify('enquiries', {
+    party: { name: d.name, email: d.email, phone: d.phone },
+    subjectLine: `Enquiry — ${d.category}`,
+    detailRows: [
+      ['Category', d.category],
+      ['Message', d.message],
+    ],
+    ackIntro: 'Thanks for getting in touch. Your message is with the Alexon team and we will come back to you shortly.',
+  });
+
   return ok({ id: data.id });
 }

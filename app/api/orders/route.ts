@@ -2,6 +2,7 @@ import { supabaseAdmin } from '@/lib/server/supabase';
 import { orderSchema } from '@/lib/server/schemas';
 import { ok, badRequest, serverError, guardConfigured } from '@/lib/server/respond';
 import { initiateStkPush, mpesaConfigured, normalisePhone } from '@/lib/server/mpesa';
+import { notify } from '@/lib/server/mail';
 
 export const runtime = 'nodejs';
 
@@ -45,12 +46,34 @@ export async function POST(request: Request) {
     return serverError();
   }
 
+  const orderRows: [string, string | undefined | null][] = [
+    ['Delivery', `${d.delivery.address}, ${d.delivery.town}, ${d.delivery.county}`],
+    ['Method', d.delivery.method.replace(/-/g, ' ')],
+    ['Site location', d.delivery.siteLocation],
+    ['Payment', d.payment.method.toUpperCase()],
+    ['Order total', `KES ${subtotal.toLocaleString('en-KE')} (delivery quoted separately)`],
+    ['Notes', d.delivery.notes],
+  ];
+
+  const notifyOrder = () =>
+    notify('orders', {
+      reference: order.reference,
+      party: { name: d.customer.fullName, email: d.customer.email, phone: d.customer.phone },
+      subjectLine: 'New order',
+      detailRows: orderRows,
+      items: d.lines,
+      ackIntro:
+        'Thanks for your order. It is with the Alexon team, who will confirm the delivery cost for your location before anything is dispatched.',
+    });
+
   // Card and bank orders are confirmed by Alexon directly — nothing to charge here.
   if (d.payment.method !== 'mpesa') {
+    await notifyOrder();
     return ok({ id: order.id, reference: order.reference, payment: 'offline' });
   }
 
   if (!mpesaConfigured) {
+    await notifyOrder();
     return ok({
       id: order.id,
       reference: order.reference,
@@ -76,6 +99,8 @@ export async function POST(request: Request) {
       .from('orders')
       .update({ checkout_request_id: stk.checkoutRequestId, mpesa_phone: phone })
       .eq('id', order.id);
+
+    await notifyOrder();
 
     return ok({
       id: order.id,

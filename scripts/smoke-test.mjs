@@ -71,13 +71,11 @@ for (const path of [
   '/request-quote', '/cart', '/checkout', '/wishlist', '/delivery',
   '/sitemap.xml', '/robots.txt',
 ]) {
-    await test(path, async () => {
+  await test(path, async () => {
     const res = await get(path);
     const body = await res.text();
-    // robots.txt is legitimately ~120 bytes; HTML pages should be much larger.
-    const min = path === '/robots.txt' ? 40 : 500;
-    if (body.length < min) throw new Error('suspiciously short response');
-    return `${(body.length / 1024).toFixed(1)} kB`;
+    if (body.length < 500) throw new Error('suspiciously short response');
+    return `${(body.length / 1024).toFixed(0)} kB`;
   });
 }
 
@@ -173,6 +171,9 @@ await test('recalculates order total server-side', async () => {
 });
 
 console.log(`\n${passed} passed · ${failed} failed · ${skipped} skipped\n`);
+
+console.log(dim('If RESEND_API_KEY is set, each PASS above also sent two emails —'));
+console.log(dim('one to the Alexon inbox and one to smoke-test@example.com.\n'));
 
 if (skipped > 0) {
   console.log(y('Skipped tests mean NEXT_PUBLIC_SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY'));

@@ -119,3 +119,79 @@ Set `MPESA_ENV=production`, swap in the production credentials, and point
 Card payments are still unimplemented — `/checkout` records the preference and
 Alexon confirms directly. Add a provider (Flutterwave, Paystack, Stripe) as a
 sibling of `lib/server/mpesa.ts` when you are ready.
+
+---
+
+## 5. Email notifications
+
+Without this, forms save to Supabase but nobody is told. Someone has to remember
+to open the dashboard — which is how a quote request sits unread for three days.
+
+### Setup
+
+1. Sign up at **resend.com** (free tier: 3,000 emails/month).
+2. **API Keys → Create** → copy the key.
+3. Add to `.env.local` and to Vercel's environment variables:
+
+```
+RESEND_API_KEY=re_...
+```
+
+4. Redeploy.
+
+That's enough to start — Resend's `onboarding@resend.dev` sender works with no
+domain setup. Emails will arrive from that address until you verify your own.
+
+### Sending from your own domain
+
+Once `alexongroupltd.com` is pointing somewhere you control:
+
+1. Resend → **Domains → Add Domain** → `alexongroupltd.com`
+2. Add the DNS records Resend gives you (SPF and DKIM)
+3. Set `MAIL_FROM=Alexon Group Ltd <noreply@alexongroupltd.com>` and redeploy
+
+Worth doing before any volume: mail from a verified domain is far less likely to
+land in spam than mail from a shared test sender.
+
+### What gets sent
+
+Every submission sends **two** emails:
+
+| Trigger | To Alexon | To the customer |
+|---|---|---|
+| Quote request | Full details + item list, Reply-To set to the customer | Acknowledgement with their reference and items |
+| Order | Details, lines, total, delivery address | Confirmation with reference |
+| M-Pesa paid | Receipt number and amount | Payment confirmed |
+| Equipment booking | Machine, dates, site | Acknowledgement |
+| Job application | Details + a 14-day signed CV link | Acknowledgement |
+| Contact enquiry | Category and message | Acknowledgement |
+
+The internal email sets **Reply-To** to the customer's address, so hitting reply
+in Gmail reaches them directly.
+
+### Reference numbers
+
+Quotes and bookings now generate `ALX-Q-260831-4821` style references, so a phone
+call can start with a reference rather than "I sent something on Tuesday". Run
+`supabase/migration-references.sql` in the SQL editor to add the columns.
+
+### Who receives what
+
+All notifications currently go to the company address. To split by department,
+edit `lib/server/notify-config.ts`:
+
+```ts
+export const recipients = {
+  quotes: 'sales@alexongroupltd.com',
+  applications: 'hr@alexongroupltd.com',
+  // ...
+};
+```
+
+Each entry accepts a single address or an array.
+
+### If email fails
+
+Nothing breaks. The database write happens first and the send is best-effort —
+a Resend outage cannot lose a quote request. Failures are logged to the Vercel
+logs with an `[alexon] email failed` prefix.

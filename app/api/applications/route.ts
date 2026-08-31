@@ -1,6 +1,7 @@
 import { supabaseAdmin } from '@/lib/server/supabase';
 import { applicationSchema } from '@/lib/server/schemas';
 import { ok, badRequest, serverError, guardConfigured } from '@/lib/server/respond';
+import { notify } from '@/lib/server/mail';
 
 export const runtime = 'nodejs';
 
@@ -75,5 +76,25 @@ export async function POST(request: Request) {
     console.error('[alexon] application insert failed', error);
     return serverError();
   }
-  return ok({ id: data.id });
+
+  /**
+   * A signed link rather than the CV itself: keeps the file in private
+   * storage, keeps the email small, and the link expires.
+   */
+  const signed = await supabaseAdmin!.storage.from('cvs').createSignedUrl(path, 60 * 60 * 24 * 14);
+
+  await notify('applications', {
+    party: { name: d.fullName, email: d.email, phone: d.phone },
+    subjectLine: `Job application — ${d.position}`,
+    detailRows: [
+      ['Position', d.position],
+      ['Based in', d.location],
+      ['About them', d.message],
+      ['CV', signed.data?.signedUrl ? 'Download link below (valid 14 days)' : 'In Supabase storage'],
+    ],
+    ackIntro:
+      'Thanks for applying. Your application and CV are with the Alexon team, and we will be in touch if your experience fits the role.',
+  });
+
+  return ok({ id: data.id, cvUrl: signed.data?.signedUrl ?? null });
 }
