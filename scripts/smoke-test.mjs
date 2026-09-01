@@ -79,9 +79,8 @@ for (const path of [
   await test(path, async () => {
     const res = await get(path);
     const body = await res.text();
-     const min = path === '/robots.txt' ? 40 : 500;
-    if (body.length < min) throw new Error('suspiciously short response');
-    return `${(body.length / 1024).toFixed(1)} kB`;
+    if (body.length < 500) throw new Error('suspiciously short response');
+    return `${(body.length / 1024).toFixed(0)} kB`;
   });
 }
 

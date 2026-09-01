@@ -55,6 +55,12 @@ Fonts at build time. If your build environment can't reach
 imports for `next/font/local` files — the CSS variables (`--font-display`,
 `--font-body`, `--font-mono`) stay the same, so nothing else changes.
 
+## Admin
+
+`/admin` — signed-in queue for the Alexon team covering quotes, orders,
+equipment bookings, job applications and enquiries. Set `ADMIN_PASSWORD` to
+enable it. See SETUP.md.
+
 ## Verified
 
 - `npm run typecheck` — clean

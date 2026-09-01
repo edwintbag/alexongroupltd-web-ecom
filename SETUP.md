@@ -195,3 +195,61 @@ Each entry accepts a single address or an array.
 Nothing breaks. The database write happens first and the send is best-effort —
 a Resend outage cannot lose a quote request. Failures are logged to the Vercel
 logs with an `[alexon] email failed` prefix.
+
+---
+
+## 6. Admin page
+
+A signed-in queue at `/admin` where the Alexon team can see and work everything
+the website receives — quotes, orders, equipment requests, job applications and
+contact messages.
+
+### Setup
+
+Add one variable to `.env.local` and to Vercel (type **Secret**), then redeploy:
+
+```
+ADMIN_PASSWORD=choose-something-long
+```
+
+Minimum 8 characters. Without it, `/admin` shows a "not set up" notice rather
+than exposing anything.
+
+Open `https://your-site/admin` and sign in.
+
+### What it does
+
+- **Five tabs**, each showing the most recent 100 records, newest first
+- **Red badge** on each tab counting items still marked `new`, so it's obvious
+  what hasn't been touched
+- **Expand any row** for the full detail — site location, items, quantities,
+  delivery address, notes
+- **Status dropdown**: new → in-progress → quoted → won → closed. Changes save
+  immediately
+- **Call and email buttons** on every row, so a quote can be answered without
+  copying numbers out
+- **Open CV** on applications — mints a one-hour signed link; the storage bucket
+  stays private
+
+### On the security model
+
+One shared password for the whole team, held in an environment variable. Not
+per-person accounts, deliberately: proper accounts mean a login flow, password
+resets and user management for a handful of people who all see the same queue.
+
+What is in place:
+
+- The session cookie holds an **HMAC of the password**, never the password, so a
+  stolen cookie can't be turned back into the credential
+- **httpOnly, secure, sameSite** — not readable by JavaScript
+- **12-hour expiry** — roughly a working day
+- **Constant-time comparison**, so the password can't be guessed by timing
+- **Rate limited** to 8 attempts per IP per 15 minutes
+- `/admin` is **excluded from robots.txt** and carries `noindex`
+
+If Alexon later wants per-person access and an audit trail of who changed what,
+Supabase Auth slots in behind the same pages.
+
+**Choose a real password.** This one URL opens every customer record, order and
+CV the business holds. Treat it like the office keys, and change it when someone
+leaves.
