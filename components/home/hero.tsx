@@ -13,13 +13,13 @@ import { company } from '@/data/company';
  */
 const frames = [
     { src: '/images/site/fleet.jpg', label: 'The fleet', alt: 'Alexon water bowser, tipper, lorry and two JCB backhoes lined up at the yard with the team' },
-  { src: '/images/site/pic 9.jpg', label: 'Plant & machinery', alt: 'Alexon backhoe loader working on a site' },
-  { src: '/images/site/block 1.jpg', label: 'The block line', alt: 'Concrete blocks being pressed at the Alexon yard' },
-  { src: '/images/site/pic 3.jpg', label: 'Construction', alt: 'Masons building blockwork columns on site' },
-  { src: '/images/site/pic 2.jpg', label: 'Logistics', alt: 'Alexon tipper truck ready to load' },
-  { src: '/images/site/pic 4.jpg', label: 'Construction', alt: 'Masons building blockwork columns on site' },
-  { src: '/images/site/pic 5.jpg', label: 'Construction', alt: 'Masons building blockwork columns on site' },
-  { src: '/images/site/pic 6.jpg', label: 'Construction', alt: 'Masons building blockwork columns on site' },
+  { src: '/images/site/pic9.jpg', label: 'Plant & machinery', alt: 'Alexon backhoe loader working on a site' },
+  { src: '/images/site/block1.jpg', label: 'The block line', alt: 'Concrete blocks being pressed at the Alexon yard' },
+  { src: '/images/site/pic3.jpg', label: 'Construction', alt: 'Masons building blockwork columns on site' },
+  { src: '/images/site/pic2.jpg', label: 'Logistics', alt: 'Alexon tipper truck ready to load' },
+  { src: '/images/site/pic4.jpg', label: 'Construction', alt: 'Masons building blockwork columns on site' },
+  { src: '/images/site/pic5.jpg', label: 'Construction', alt: 'Masons building blockwork columns on site' },
+  { src: '/images/site/pic6.jpg', label: 'Construction', alt: 'Masons building blockwork columns on site' },
 ];
 
 export function Hero() {
