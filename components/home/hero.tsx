@@ -16,9 +16,9 @@ const frames = [
   { src: '/images/site/hero-backhoe.jpg', label: 'Plant & machinery', alt: 'Alexon backhoe loader working on a site' },
   { src: '/images/site/block1.JPG', label: 'The block line', alt: 'Concrete blocks being pressed at the Alexon yard' },
   { src: '/images/site/construction1.jpg', label: 'Construction', alt: 'Masons building blockwork columns on site' },
-  { src: '/images/site/tipper-fllet.JPG', label: 'Logistics', alt: 'Alexon tipper truck ready to load' },
+  { src: '/images/site/tipper-fllet.jpg', label: 'Logistics', alt: 'Alexon tipper truck ready to load' },
   { src: '/images/site/construction.jpg', label: 'Construction', alt: 'Masons building blockwork columns on site' },
-  { src: '/images/site/site-masonry.JPG', label: 'Construction', alt: 'Masons building blockwork columns on site' },
+  { src: '/images/site/site-masonry.jpg', label: 'Construction', alt: 'Masons building blockwork columns on site' },
   { src: '/images/site/alexon5.JPG', label: 'Construction', alt: 'Masons building blockwork columns on site' },
 ];
 
