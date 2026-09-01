@@ -27,12 +27,12 @@ export const gallery: GalleryMedia[] = [
   { id: 'g-19', src: '/images/equipment/excavator.jpg', alt: 'Tracked excavator loading a tipper on site', caption: 'Excavator loading out', category: 'machinery', aspect: 'landscape' },
   { id: 'g-20', src: '/images/equipment/grader.jpg', alt: 'Motor grader shaping a murram road', caption: 'Grader shaping the formation', category: 'machinery', aspect: 'landscape' },
   { id: 'g-21', src: '/images/equipment/lowbed-trailer.jpg', alt: 'Alexon lowbed prime mover on the highway', caption: 'Lowbed on the move', category: 'logistics', aspect: 'landscape' },
-  { id: 'g-22', src: '/images/equipment/tippers.jpg', alt: 'Alexon fleet of tippers and water bowsers lined up', caption: 'The fleet, lined up', category: 'logistics', aspect: 'landscape' },
-  { id: 'g-23', src: '/images/equipment/tippers 2.jpg', alt: 'Alexon fleet of tippers and water bowsers lined up', caption: 'The fleet, lined up', category: 'logistics', aspect: 'landscape' },
-  { id: 'g-24', src: '/images/equipment/tipper-trailer.jpg', alt: 'Alexon fleet of tippers and water bowsers lined up', caption: 'The fleet, lined up', category: 'logistics', aspect: 'landscape' },
-  { id: 'g-25', src: '/images/equipment/pickup.jpg', alt: 'Alexon fleet of tippers and water bowsers lined up', caption: 'The fleet, lined up', category: 'logistics', aspect: 'landscape' },
-  { id: 'g-26', src: '/images/equipment/fleet.jpg', alt: 'Alexon fleet of tippers and water bowsers lined up', caption: 'The fleet, lined up', category: 'logistics', aspect: 'landscape' },
-  { id: 'g-27', src: '/images/equipment/frr90.jpg', alt: 'Alexon fleet of tippers and water bowsers lined up', caption: 'The fleet, lined up', category: 'logistics', aspect: 'landscape' },
+  { id: 'g-22', src: '/images/equipment/tippers.jpg', alt: 'Alexon fleet', caption: 'The fleet, lined up', category: 'logistics', aspect: 'landscape' },
+  { id: 'g-23', src: '/images/equipment/tippers 2.jpg', alt: 'Alexon fleet', caption: 'The fleet, lined up', category: 'logistics', aspect: 'landscape' },
+  { id: 'g-24', src: '/images/equipment/tipper-trailer.jpg', alt: 'Alexon fleet', caption: 'The fleet, lined up', category: 'logistics', aspect: 'landscape' },
+  { id: 'g-25', src: '/images/equipment/pickup.jpg', alt: 'Alexon fleet', caption: 'The fleet, lined up', category: 'logistics', aspect: 'landscape' },
+  { id: 'g-26', src: '/images/equipment/fleet.jpg', alt: 'Alexon fleet', caption: 'The fleet, lined up', category: 'logistics', aspect: 'landscape' },
+  { id: 'g-27', src: '/images/equipment/frr90.jpg', alt: 'Alexon fleet', caption: 'The fleet, lined up', category: 'logistics', aspect: 'landscape' },
 ];
 
 export const galleryFilters = [
