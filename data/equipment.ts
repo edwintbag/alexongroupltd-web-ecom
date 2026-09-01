@@ -76,6 +76,42 @@ export const equipment: Equipment[] = [
     todo: 'Catalogue prints tipper prices without a unit. Confirm whether KES 20,000 / 14,000 is per load, per trip or per day, and the distance covered.',
   },
   {
+    id: 'eq-tippers',
+    slug: 'tippers',
+    name: 'Tippers',
+    category: 'haulage',
+    summary: 'Tipper haulage in two body sizes for aggregates, spoil and materials.',
+    description:
+      'The tipper fleet moves sand, ballast, murram, spoil and general materials to and from site. Two body sizes are carried so a small compound job is not charged for a full load it does not need.',
+    images: ['/images/equipment/tippers 2.jpg', '/images/site/tipper-fleet.jpg'],
+    rates: [
+      { label: 'Mguu kumi', price: 20000, unit: 'per load', note: 'Ten-foot body' },
+      { label: 'Mguu sita', price: 14000, unit: 'per load', note: 'Six-foot body' },
+    ],
+    operatorIncluded: true,
+    applications: ['Aggregate delivery', 'Spoil removal', 'Murram haulage', 'Material transport'],
+    availability: 'on-request',
+    todo: 'Catalogue prints tipper prices without a unit. Confirm whether KES 20,000 / 14,000 is per load, per trip or per day, and the distance covered.',
+  },
+  {
+    id: 'eq-tippers',
+    slug: 'tippers',
+    name: 'Tippers',
+    category: 'haulage',
+    summary: 'Tipper haulage in two body sizes for aggregates, spoil and materials.',
+    description:
+      'The tipper fleet moves sand, ballast, murram, spoil and general materials to and from site. Two body sizes are carried so a small compound job is not charged for a full load it does not need.',
+    images: ['/images/equipment/tipper-trailer.jpg', '/images/site/tipper-fleet.jpg'],
+    rates: [
+      { label: 'Mguu kumi', price: 20000, unit: 'per load', note: 'Ten-foot body' },
+      { label: 'Mguu sita', price: 14000, unit: 'per load', note: 'Six-foot body' },
+    ],
+    operatorIncluded: true,
+    applications: ['Aggregate delivery', 'Spoil removal', 'Murram haulage', 'Material transport'],
+    availability: 'on-request',
+    todo: 'Catalogue prints tipper prices without a unit. Confirm whether KES 20,000 / 14,000 is per load, per trip or per day, and the distance covered.',
+  },
+  {
     id: 'eq-lowbed',
     slug: 'lowbed-trailer',
     name: 'Lowbed Trailer',

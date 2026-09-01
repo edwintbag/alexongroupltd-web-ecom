@@ -25,7 +25,24 @@ export default function EquipmentPage() {
         image="/images/equipment/excavator.jpg"
         crumbs={[{ name: 'Home', href: '/' }, { name: 'Equipment hire', href: '/equipment' }]}
       />
-
+      <section className="pt-[var(--space-section)]">
+        <div className="shell">
+          <div className="relative aspect-[3/2] overflow-hidden border border-line sm:aspect-[16/9] lg:aspect-[21/9]">
+            <Image
+              src="/images/site/fleet.jpg"
+              alt="Alexon water bowser, tipper, lorry and two JCB backhoes lined up at the yard"
+              fill
+              sizes="100vw"
+              className="object-cover object-center"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-void/85 via-void/10 to-transparent" />
+            <p className="absolute bottom-5 left-5 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-gold">
+              Plant, haulage and water — all Alexon-owned
+            </p>
+          </div>
+        </div>
+      </section>
       <section className="section">
         <div className="shell space-y-4">
           {equipment.map((item, i) => (

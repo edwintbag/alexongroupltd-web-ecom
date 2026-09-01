@@ -49,7 +49,7 @@ export const services: Service[] = [
     summary:
       'A fleet of tippers, lorries and pick-ups moving materials, aggregates and plant across the region.',
     bullets: ['Tippers', 'Lorries', 'Pick-ups', 'Heavy plant haulage'],
-    image: '/images/site/tipper-fleet.jpg',
+    image: '/images/equipment/fleet.jpg',
     cta: { label: 'Arrange transport', href: '/request-quote?type=logistics' },
   },
 ];

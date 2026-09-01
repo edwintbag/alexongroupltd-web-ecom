@@ -38,7 +38,6 @@ export default function EquipmentDetailPage({ params }: { params: { slug: string
 
       <section className="shell section">
         <Breadcrumb items={crumbs} />
-
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <ProductGallery images={item.images} name={item.name} />
 
