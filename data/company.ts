@@ -51,13 +51,13 @@ export const company = {
   website: 'www.alexongroupltd.com',
   siteUrl: resolveSiteUrl(),
   /** The banner shows these platform icons but prints no handles. */
-  socials: [
-    { name: 'Facebook', href: '#', todo: 'Add Facebook page URL' },
-    { name: 'YouTube', href: '#', todo: 'Add YouTube channel URL' },
-    { name: 'X', href: '#', todo: 'Add X profile URL' },
-    { name: 'TikTok', href: '#', todo: 'Add TikTok profile URL' },
-    { name: 'LinkedIn', href: '#', todo: 'Add LinkedIn company page URL' },
-    { name: 'Instagram', href: '#', todo: 'Add Instagram profile URL' },
+    socials: [
+    { name: 'Facebook', href: 'https://www.facebook.com/alexongroup/' },
+    { name: 'YouTube', href: 'https://www.youtube.com/@AlexonGroup' },
+    { name: 'X', href: 'https://x.com/AlexonGroup' },
+    { name: 'TikTok', href: 'https://www.tiktok.com/@alexongroupltd' },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/alexon-group/' },
+    { name: 'Instagram', href: 'https://www.instagram.com/alexongroupltd/' },
   ],
   /** TODO: opening hours are not stated in the supplied documents. */
   openingHours: null as string | null,

@@ -118,7 +118,13 @@ export function Footer() {
           </p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono uppercase tracking-[0.14em]">
             {company.socials.map((s) => (
-              <a key={s.name} href={s.href} className="transition-colors hover:text-gold" title={s.todo}>
+              <a               
+                key={s.name}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-gold"
+              >
                 {s.name}
               </a>
             ))}
