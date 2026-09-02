@@ -15,8 +15,10 @@ export const metadata = buildMetadata({
 });
 
 /** Map embed uses a place query rather than a fabricated pin. */
-const mapSrc = 'https://www.google.com/maps?q=Ugunja,+Siaya+County,+Kenya&output=embed';
-
+/** Embed for the ALEXON GROUP LIMITED business listing on the Kisumu–Busia highway. */
+/** Embed for the ALEXON GROUP LIMITED business listing on the Kisumu–Busia highway. */
+const mapSrc =
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3039.1025504778936!2d34.2769043734929!3d0.19092506420764555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177f97542a77e8f1%3A0x3d9975c3101eba0d!2sALEXON%20GROUP%20LIMITED!5e1!3m2!1sen!2ske!4v1788380135763!5m2!1sen!2ske';
 export default function ContactPage() {
   return (
     <>
