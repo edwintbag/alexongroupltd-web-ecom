@@ -65,7 +65,7 @@ export const equipment: Equipment[] = [
     summary: 'Tipper haulage in two body sizes for aggregates, spoil and materials.',
     description:
       'The tipper fleet moves sand, ballast, murram, spoil and general materials to and from site. Two body sizes are carried so a small compound job is not charged for a full load it does not need.',
-    images: ['/images/equipment/tippers.jpg', '/images/site/tipper-fleet.jpg'],
+    images: ['/images/equipment/tippers.JPG', '/images/site/tipper-fleet.jpg'],
     rates: [
       { label: 'Mguu kumi', price: 20000, unit: 'per load', note: 'Ten-foot body' },
       { label: 'Mguu sita', price: 14000, unit: 'per load', note: 'Six-foot body' },
