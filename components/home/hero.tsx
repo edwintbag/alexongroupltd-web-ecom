@@ -49,8 +49,8 @@ export function Hero() {
             <Image src={frame.src} alt={frame.alt} fill priority={index === 0} sizes="100vw" className="object-cover" />
           </motion.div>
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-t from-void via-void/75 to-void/35" />
-        <div className="absolute inset-0 bg-gradient-to-r from-void/85 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-void via-void/55 to-void/10" />
+<div className="absolute inset-0 bg-gradient-to-r from-void/70 via-void/10 to-transparent" />
         <div className="grain absolute inset-0" />
       </div>
 
