@@ -19,8 +19,7 @@ export function PageHero({
   return (
     <section className="relative isolate overflow-hidden border-b border-line">
       <Image src={image} alt="" fill sizes="100vw" className="object-cover" priority />
-      <div className="absolute inset-0 bg-gradient-to-r from-void via-void/92 to-void/55" />
-      <div className="grain absolute inset-0" />
+              <div className="absolute inset-0 bg-gradient-to-r from-void/95 via-void/75 to-void/35" />
       <div className="shell relative py-16 md:py-24">
         <Breadcrumb items={crumbs} />
         <p className="eyebrow mb-4">{eyebrow}</p>
